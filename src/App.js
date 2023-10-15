@@ -18,7 +18,11 @@ function App() {
           Learn React
         </a>
       </header>
-    </div>
+      <div>
+      <button>Save To Spotify</button>
+      <button>Search</button>
+      </div>
+    </div>    
   );
 }
 
