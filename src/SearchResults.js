@@ -1,7 +1,7 @@
 import React from "react";
 
 //Each hard-coded array of track objects should contain a name, artist, album, and id property.
-const SearchResult = [
+const SearchResults = [
     {
         name: "Kura Kura",
         artist: "Ado",
@@ -34,4 +34,4 @@ const SearchResult = [
     }
 
 ]
-export default SearchResult
+export default SearchResults
