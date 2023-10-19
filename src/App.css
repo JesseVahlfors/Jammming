@@ -31,10 +31,39 @@
   }
 }
 
+button {
+  width: 12em;
+  height: 3em;
+}
+
 .lists-container {
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
+}
+
+
+.playlist {
+  display: flex;
+  flex-direction: column;
+  background-color: cornflowerblue;
+  width: 30%;
+  align-items: center;
+}
+
+.playlistName {
+
+    display: block;
+    width: 25em;
+    height: 3em;
+
+}
+
+.searchbar {
+  display: block;
+  width: 25em;
+  height: 3em;
+  margin: auto;
 }
 
 .tracklist {
@@ -42,11 +71,4 @@
   flex-direction: column;
   background-color: blueviolet;
   width: 40%;
-}
-
-.playlist {
-  display: flex;
-  flex-direction: column;
-  background-color: cornflowerblue;
-  width: 30%
 }

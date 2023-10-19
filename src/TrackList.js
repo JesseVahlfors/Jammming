@@ -13,7 +13,7 @@ Use JavaScript’s map() method to iterate over arrays and render multiple compo
 When returning the list of tracks, make sure to set a unique key attribute for each track. This will help React efficiently update the DOM when changes occur.*/
 import React, { useState } from "react";
 import SearchResults from "./SearchResults";
-import styles from "./TrackList.module.css"
+import Track from "./Track";
 //Each hard-coded array of track objects should contain a name, artist, album, and id property.
 
 
@@ -21,17 +21,10 @@ import styles from "./TrackList.module.css"
 
 //Your Jammming web app should display the song name, artist, and album for each track in the results list.
 
-function TrackList() {
-    const [results, setResults] = useState(SearchResults)
+function TrackList(props) {
     return (
         <>
-            {results.map((result, i) => (
-            <div key={i} className="track">
-                <h3>Name: {result.name}</h3>
-                <h4>Artist: {result.artist}</h4>
-                <h4>Album: {result.album}</h4>
-            </div>
-            ))}
+            <Track />
         </>
     )
 }
