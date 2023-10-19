@@ -12,8 +12,8 @@ Consider using state to store information such as your search results array, all
 Use JavaScript’s map() method to iterate over arrays and render multiple components dynamically.
 When returning the list of tracks, make sure to set a unique key attribute for each track. This will help React efficiently update the DOM when changes occur.*/
 import React, { useState } from "react";
-import SearchResults from "./SearchResults";
 import Track from "./Track";
+import styles from "./TrackList.module.css"
 //Each hard-coded array of track objects should contain a name, artist, album, and id property.
 
 
@@ -21,12 +21,18 @@ import Track from "./Track";
 
 //Your Jammming web app should display the song name, artist, and album for each track in the results list.
 
-function TrackList(props) {
+function TrackList({ tracks, onAddToPlaylist }) {
     return (
-        <>
-            <Track />
-        </>
-    )
+        <div className="tracklist">
+            <h2>Results</h2>
+            {tracks.map((track, index) => (
+                <div key={track.id}>
+                    <Track  name={track.name} artist={track.artist} album={track.album}  />
+                    <button onClick={() => onAddToPlaylist(track)}>Add To Playlist</button>
+                </div>
+            ))}
+        </div>
+    );
 }
 
 export default TrackList

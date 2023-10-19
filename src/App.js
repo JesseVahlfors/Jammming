@@ -1,9 +1,22 @@
+
+import React, { useState } from 'react';
 import './App.css';
 import SearchResults from './SearchResults';
-import Track from './Track';
+import Playlist from './Playlist';
+import TrackList from './TrackList';
 
 function App() {
   const { searchData, loading } = SearchResults();
+  const [playlist, setPlaylist] = useState([]);
+
+  const handleAddToPlaylist = (track) => {
+    setPlaylist([...playlist, track]);
+  };
+
+  const handleRemoveFromPlaylist = (track) => {
+    const updatedPlaylist = playlist.filter((t) => t.id !== track.id);
+    setPlaylist(updatedPlaylist);
+  }
 
   return (
     <div className="App">
@@ -14,28 +27,12 @@ function App() {
         <input type='text' className='searchbar'></input>
         <button>Search</button>
         <div className='lists-container'>
-          <div className="tracklist">
-            <h2>Results</h2>
             {loading ? (
               <p>Loading...</p>
             ) : (
-              <div>
-                {searchData.map((result) => (
-                  <Track 
-                    key={result.id}
-                    name={result.name}
-                    artist={result.artist}
-                    album={result.album}  
-                  />
-                ))}
-              </div>
+                <TrackList tracks={searchData} on onAddToPlaylist={handleAddToPlaylist}/>
             )}
-          </div>     
-          <div className='playlist'>
-            <input type='text' className='playlistName' placeholder="Please name your playlist"></input>
-
-            <button>Save To Spotify</button> 
-          </div>
+            <Playlist playlist={playlist} onRemoveFromPlaylist={handleRemoveFromPlaylist}/>   
         </div>                
       </div>
     </div>    
