@@ -40,6 +40,7 @@ button {
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
+  
 }
 
 
@@ -48,15 +49,22 @@ button {
   flex-direction: column;
   background-color: cornflowerblue;
   width: 30%;
+}
+
+.playlistItems {
+  display: flex;
+  flex-direction: column;
   align-items: center;
 }
 
 .playlistName {
+  display: block;
+  width: 25em;
+  height: 3em;
+}
 
-    display: block;
-    width: 25em;
-    height: 3em;
-
+.saveButton {
+  align-self: center;
 }
 
 .searchbar {
@@ -64,6 +72,14 @@ button {
   width: 25em;
   height: 3em;
   margin: auto;
+}
+
+.track, .playlistTrack {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-left: 20px;
+  margin-right: 20px;
 }
 
 .tracklist {
