@@ -11,9 +11,8 @@ Each hard-coded array of track objects should contain a name, artist, album, and
 Consider using state to store information such as your search results array, allowing you to update the array in response to user inputs and other events.
 Use JavaScript’s map() method to iterate over arrays and render multiple components dynamically.
 When returning the list of tracks, make sure to set a unique key attribute for each track. This will help React efficiently update the DOM when changes occur.*/
-import React, { useState } from "react";
+import React from "react";
 import Track from "./Track";
-import styles from "./TrackList.module.css"
 //Each hard-coded array of track objects should contain a name, artist, album, and id property.
 
 

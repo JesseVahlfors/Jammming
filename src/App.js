@@ -10,7 +10,8 @@ function App() {
   const [playlist, setPlaylist] = useState([]);
 
   const handleAddToPlaylist = (track) => {
-    setPlaylist([...playlist, track]);
+    const isInPlaylist = playlist.some((t) => t.id === track.id);
+    if(!isInPlaylist) {setPlaylist([...playlist, track])}; 
   };
 
   const handleRemoveFromPlaylist = (track) => {
@@ -30,7 +31,7 @@ function App() {
             {loading ? (
               <p>Loading...</p>
             ) : (
-                <TrackList tracks={searchData} on onAddToPlaylist={handleAddToPlaylist}/>
+                <TrackList tracks={searchData} onAddToPlaylist={handleAddToPlaylist}/>
             )}
             <Playlist playlist={playlist} onRemoveFromPlaylist={handleRemoveFromPlaylist}/>   
         </div>                
