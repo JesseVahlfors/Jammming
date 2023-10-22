@@ -8,6 +8,7 @@ import background from "./img/HeadphonesGirl.png"
 function App() {
   const { searchData, loading } = SearchResults();
   const [playlist, setPlaylist] = useState([]);
+  
 
   const handleAddToPlaylist = (track) => {
     const isInPlaylist = playlist.some((t) => t.id === track.id);
@@ -19,11 +20,18 @@ function App() {
     setPlaylist(updatedPlaylist);
   }
   
-  const handleSavePlaylist = () => {
+  const handleSavePlaylist = (playlistName) => {
     const playlistUris = playlist.map((track) => track.uri);
+    console.log(`Playlist name: ${playlistName}`);
     console.log(playlistUris);
     setPlaylist([]);
+    setPlaylistName("");
   }
+  
+  const [playlistName, setPlaylistName] = useState("");
+  const handleNameChange = (event) => {
+    setPlaylistName(event.target.value);
+};
 
   return (
     <div className="App" style={{ backgroundImage: `url(${background})`}}>
@@ -41,11 +49,20 @@ function App() {
             ) : (
                 <TrackList tracks={searchData} onAddToPlaylist={handleAddToPlaylist}/>
             )}
-            <Playlist 
-            playlist={playlist}
-            onRemoveFromPlaylist={handleRemoveFromPlaylist}
-            onSavePlaylist={handleSavePlaylist}
-            />   
+            <div className='playlist'>
+              <input
+              type="text"
+              placeholder="Name your playlist"
+              value={playlistName}
+              onChange={handleNameChange} 
+              />
+              <Playlist 
+              playlist={playlist}
+              playlistName={playlistName}
+              onRemoveFromPlaylist={handleRemoveFromPlaylist}
+              onSavePlaylist={handleSavePlaylist}
+              />
+            </div>   
         </div>              
       </div>
       <footer>
