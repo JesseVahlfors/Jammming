@@ -22,21 +22,19 @@ function Playlist({ playlist, onRemoveFromPlaylist }) {
 
     return (
         <div className="playlist">
-            <div className="playlistItems">
-                <input
-                type="text"
-                placeholder="Playlist Name"
-                value={playlistName}
-                onChange={handleNameChange} 
-                />
-            </div>
+            <input
+            type="text"
+            placeholder="Name your playlist"
+            value={playlistName}
+            onChange={handleNameChange} 
+            />
             {playlist.map((track, i) => (
             <div key={i} className="playlistTrack">
                 <div>
                 <h3>{track.name}</h3>
                 <p>{track.artist} | {track.album}</p>
                 </div>
-                <button onClick={() => onRemoveFromPlaylist(track)}>X</button>
+                <button onClick={() => onRemoveFromPlaylist(track)} className="removeButton">X</button>
             </div>
             ))}
             <button onClick={handleSavePlaylist} className="saveButton">Save To Spotify</button>

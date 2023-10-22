@@ -1,38 +1,66 @@
+html, body {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
 
 button {
-  width: 12em;
+  min-width: 130px;
+  height: 40px;
+  color: #fff;
+  padding: 5px 10px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  display: inline-block;
+  outline: none;
+  border-radius: 20px;
+  border: 2px solid rgb(72, 166, 248);
+  background: rgba(92, 43, 226, 0.2);
+}
+
+button:hover {
+  background: rgb(151, 88, 209);
+}
+
+footer {
+  color:aliceblue;
+  background-color: rgb(43, 5, 78);
+  border-top: 1px solid #969dff;
+  text-align: center;
+  padding-bottom: 15px;
+  position: fixed;
+  left: 0;
+  bottom: 0;
   height: 3em;
-  border-radius: 1.5em;
+  width: 100%;
+}
+
+header {
+  background-color: rgb(43, 5, 78);
 }
 
 h1 {
   text-align: center;
+  color:antiquewhite;
+  margin-top: 0em;
+}
+
+h2 {
+  margin-left: 0.5em;
 }
 
 span {
   color:blueviolet
 }
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
+.App {
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100vw;
+  @media (max-width: 768px) {
+    height:auto;
   }
 }
 
@@ -43,12 +71,29 @@ span {
   
 }
 
-
 .playlist {
   display: flex;
   flex-direction: column;
-  background-color: cornflowerblue;
-  width: 30%;
+  background-color: rgb(138, 43, 226, 50%);
+  width: 40%;
+  max-width: 30em;
+  border-radius: 1em;
+  color: aliceblue;
+}
+
+.playlist input {
+  background-color: rgb(150, 157, 255, 0%);
+  color: aliceblue;
+  font-size: 1.5em;
+  border: none;
+  border-bottom: solid 2px;
+  border-color: rgb(72, 166, 248);
+  padding: 0.2em;
+  margin: 0.2em;
+}
+
+.playlist input:focus {
+  outline: none;
 }
 
 .playlistItems {
@@ -63,8 +108,13 @@ span {
   height: 3em;
 }
 
+.removeButton {
+  width: 40px;
+  min-width: auto;
+}
 .saveButton {
   align-self: center;
+  width: 12em;
 }
 
 .searchbar {
@@ -75,22 +125,49 @@ span {
 }
 
 .searchbar input {
-  height: 3em;
   width: 30%;
+  background-color: rgb(150, 157, 255, 40%);
+  color: aliceblue;
+  font-size: 2em;
+  border: none;
+  border-bottom: solid 2px;
+  border-color: rgb(72, 166, 248);
+  margin-bottom: 1em;;
+}
 
+.searchbar button {
+  align-self: center;
+  width: 12em;
+  height: 3em;
+  border-radius: 1.5em;
 }
 
 .track, .playlistTrack {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-left: 20px;
-  margin-right: 20px;
+  margin: 0em 1em 1em 1em;
+  border-bottom: solid 1px;
+  border-color: rgb(72, 166, 248);
+}
+
+.track h3, .playlist h3 {
+  margin: 0em;
+}
+
+.track p, .playlistTrack p {
+  color: rgb(203, 207, 211);
+  margin: 0em;
 }
 
 .tracklist {
   display: flex;
   flex-direction: column;
-  background-color: blueviolet;
-  width: 40%;
+  background-color: rgb(138, 43, 226, 50%);
+  width: 50%;
+  max-width: 30em;
+  border-radius: 1em;
+  color: aliceblue;
 }
+
+

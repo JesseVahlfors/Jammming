@@ -4,6 +4,7 @@ import './App.css';
 import SearchResults from './SearchResults';
 import Playlist from './Playlist';
 import TrackList from './TrackList';
+import background from "./img/HeadphonesGirl.png"
 
 function App() {
   const { searchData, loading } = SearchResults();
@@ -20,11 +21,11 @@ function App() {
   }
 
   return (
-    <div className="App">
-      <header className="App-header">
+    <div className="App" style={{ backgroundImage: `url(${background})`}}>
+      <header className="App-header" >
         <h1>Ja<span>mmm</span>ing</h1>
       </header>
-      <div className='App-container'>
+      <div>
         <div className='searchbar'>
           <input type='text'></input>
           <button>Search</button>
@@ -36,8 +37,11 @@ function App() {
                 <TrackList tracks={searchData} onAddToPlaylist={handleAddToPlaylist}/>
             )}
             <Playlist playlist={playlist} onRemoveFromPlaylist={handleRemoveFromPlaylist}/>   
-        </div>                
+        </div>              
       </div>
+      <footer>
+        <h3>Made by Jesse Vahlfors 2023</h3>
+      </footer>  
     </div>    
   );
 }

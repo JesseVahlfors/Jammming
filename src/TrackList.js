@@ -29,7 +29,7 @@ function TrackList({ tracks, onAddToPlaylist }) {
                     <div >
                         <Track  name={track.name} artist={track.artist} album={track.album}  />
                     </div>
-                    <button onClick={() => onAddToPlaylist(track)}>+</button>
+                    <button onClick={() => onAddToPlaylist(track)} className="addButton">Add</button>
                 </div>
             ))}
         </div>
