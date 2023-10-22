@@ -22,11 +22,13 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <h1>Jammming</h1>
+        <h1>Ja<span>mmm</span>ing</h1>
       </header>
       <div className='App-container'>
-        <input type='text' className='searchbar'></input>
-        <button>Search</button>
+        <div className='searchbar'>
+          <input type='text'></input>
+          <button>Search</button>
+        </div>
         <div className='lists-container'>
             {loading ? (
               <p>Loading...</p>

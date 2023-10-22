@@ -8,7 +8,7 @@ This data flow should pass down the playlist name and tracks. */
 
 
 function Playlist({ playlist, onRemoveFromPlaylist }) {
-    const [playlistName, setPlaylistName] = useState("Gacha Pop playlist")
+    const [playlistName, setPlaylistName] = useState("")
 
     const handleNameChange = (event) => {
         setPlaylistName(event.target.value);
@@ -23,10 +23,9 @@ function Playlist({ playlist, onRemoveFromPlaylist }) {
     return (
         <div className="playlist">
             <div className="playlistItems">
-                <h2>Playlist</h2>
                 <input
                 type="text"
-                placeholder="Enter playlist name"
+                placeholder="Playlist Name"
                 value={playlistName}
                 onChange={handleNameChange} 
                 />
@@ -34,11 +33,10 @@ function Playlist({ playlist, onRemoveFromPlaylist }) {
             {playlist.map((track, i) => (
             <div key={i} className="playlistTrack">
                 <div>
-                    <h3>Name: {track.name}</h3>
-                    <p>Artist: {track.artist}</p>
-                    <p>Album: {track.album}</p>
+                <h3>{track.name}</h3>
+                <p>{track.artist} | {track.album}</p>
                 </div>
-                <button onClick={() => onRemoveFromPlaylist(track)}>Remove from playlist</button>
+                <button onClick={() => onRemoveFromPlaylist(track)}>X</button>
             </div>
             ))}
             <button onClick={handleSavePlaylist} className="saveButton">Save To Spotify</button>

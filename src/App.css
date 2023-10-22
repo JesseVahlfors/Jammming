@@ -1,7 +1,17 @@
-.App {
+
+button {
+  width: 12em;
+  height: 3em;
+  border-radius: 1.5em;
+}
+
+h1 {
   text-align: center;
 }
 
+span {
+  color:blueviolet
+}
 .App-logo {
   height: 40vmin;
   pointer-events: none;
@@ -24,11 +34,6 @@
   to {
     transform: rotate(360deg);
   }
-}
-
-button {
-  width: 12em;
-  height: 3em;
 }
 
 .lists-container {
@@ -63,10 +68,16 @@ button {
 }
 
 .searchbar {
-  display: block;
-  width: 25em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 5em auto 5em auto;
+}
+
+.searchbar input {
   height: 3em;
-  margin: auto;
+  width: 30%;
+
 }
 
 .track, .playlistTrack {

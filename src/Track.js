@@ -3,9 +3,8 @@ import React from "react";
 function Track(props) {
     return (
         <>
-            <h3>Name: {props.name}</h3>
-            <p>Artist: {props.artist}</p>
-            <p>Album: {props.album}</p>
+            <h3>{props.name}</h3>
+            <p>{props.artist} | {props.album}</p>
         </>
     );
 }
