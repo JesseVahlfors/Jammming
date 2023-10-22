@@ -7,17 +7,11 @@ Create a unidirectional data flow from your root component to relevant children 
 This data flow should pass down the playlist name and tracks. */
 
 
-function Playlist({ playlist, onRemoveFromPlaylist }) {
+function Playlist({ playlist, onRemoveFromPlaylist, onSavePlaylist }) {
     const [playlistName, setPlaylistName] = useState("")
 
     const handleNameChange = (event) => {
         setPlaylistName(event.target.value);
-    };
-
-    const handleSavePlaylist = () => {
-        console.log("Playlist Name: " + playlistName)
-
-        setPlaylistName("")
     };
 
     return (
@@ -37,7 +31,9 @@ function Playlist({ playlist, onRemoveFromPlaylist }) {
                 <button onClick={() => onRemoveFromPlaylist(track)} className="removeButton">X</button>
             </div>
             ))}
-            <button onClick={handleSavePlaylist} className="saveButton">Save To Spotify</button>
+            <button onClick={onSavePlaylist} className="saveButton">
+                Save To Spotify
+            </button>
         </div>
     )
 }

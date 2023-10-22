@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import './App.css';
 import SearchResults from './SearchResults';
@@ -19,6 +18,12 @@ function App() {
     const updatedPlaylist = playlist.filter((t) => t.id !== track.id);
     setPlaylist(updatedPlaylist);
   }
+  
+  const handleSavePlaylist = () => {
+    const playlistUris = playlist.map((track) => track.uri);
+    console.log(playlistUris);
+    setPlaylist([]);
+  }
 
   return (
     <div className="App" style={{ backgroundImage: `url(${background})`}}>
@@ -36,7 +41,11 @@ function App() {
             ) : (
                 <TrackList tracks={searchData} onAddToPlaylist={handleAddToPlaylist}/>
             )}
-            <Playlist playlist={playlist} onRemoveFromPlaylist={handleRemoveFromPlaylist}/>   
+            <Playlist 
+            playlist={playlist}
+            onRemoveFromPlaylist={handleRemoveFromPlaylist}
+            onSavePlaylist={handleSavePlaylist}
+            />   
         </div>              
       </div>
       <footer>
