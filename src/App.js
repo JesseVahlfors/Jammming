@@ -57,8 +57,9 @@ function App() {
 
   const logout = () => {
     setAccessToken(null, 0); // Clear the token
-    window.localStorage.removeItem("token")
-  }
+    window.localStorage.removeItem("token");
+    clearURLParameters()
+  };
 
   return (
     <div className="App" style={{ backgroundImage: `url(${background})`}}>
