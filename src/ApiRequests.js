@@ -1,4 +1,4 @@
-import { getAccessToken } from "./AccessToken";
+/* import { getAccessToken } from "./AccessToken";
 
 const headers = {
     authorization: `bearer ${getAccessToken()}`
@@ -12,4 +12,4 @@ fetch("https://api.spotify.com/v1/me", {
     .then((response) => response.json())
     .then((data) => {
 
-    })
+    }) */

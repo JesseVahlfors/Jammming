@@ -5,7 +5,7 @@ export const setAccessToken = (token, expiresIn) => {
     accessToken = token;
     tokenExpiration= new Date().getTime() + expiresIn * 3600;
 
-    clearURLParameters();
+    //clearURLParameters();
 };
 
 export const getAccessToken = () => {
@@ -18,8 +18,8 @@ export const getAccessToken = () => {
 }
 
 
-function clearURLParameters() {
+export function clearURLParameters() {
     // Remove sensitive parameters from the URL.
     const newUrl = window.location.href.split('#')[0]; // Remove fragment
-    history.replaceState(null, document.title, newUrl);
+    window.location.replace(newUrl)
   }

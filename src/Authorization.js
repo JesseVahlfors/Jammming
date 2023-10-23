@@ -1,4 +1,3 @@
-import { setAccessToken } from "./AccessToken";
 const clientId = "70293d0b13ea4ca5b53bc975873c5879"
 const redirectUri = "http://localhost:3000"
 const scope = "user-read-private user-read-email"
@@ -18,11 +17,14 @@ function generateRandomString(length) {
 const state = generateRandomString(16);
 localStorage.setItem('spotify_auth_state', state);
 
-const authorizationUrl = "https://accounts.spotify.com/authorize"
-+ `?response_type=token`;
-+ `&client_id=${clientId}`;
-+ `&scope=${scope}`
-+ `&redirect_uri=${redirectUri}`
-+ `&state=${state}`;
+export let authorizationUrl = "https://accounts.spotify.com/authorize"
+authorizationUrl += `?response_type=token`;
+authorizationUrl += `&client_id=${clientId}`;
+authorizationUrl += `&scope=${scope}`
+authorizationUrl += `&redirect_uri=${redirectUri}`
+authorizationUrl += `&state=${state}`;
 
-window.location.href = authorizationUrl;
+
+/* const accessToken = window.location.href.get("access_token")
+const expiresIn = window.location.href.get("expires_in")
+setAccessToken(accessToken, expiresIn); */

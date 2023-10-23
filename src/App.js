@@ -1,14 +1,36 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './App.css';
 import SearchResults from './SearchResults';
 import Playlist from './Playlist';
 import TrackList from './TrackList';
 import background from "./img/HeadphonesGirl.png"
+import { authorizationUrl } from './Authorization';
+import { clearURLParameters, getAccessToken, setAccessToken } from './AccessToken';
 
 function App() {
   const { searchData, loading } = SearchResults();
   const [playlist, setPlaylist] = useState([]);
+ 
+  const [token, setToken] = useState("")
+
+  useEffect(() => {
+    const hash = window.location.hash
+    let token = window.localStorage.getItem("token");
+
+    if (hash) {
+      const urlParams = new URLSearchParams(hash.replace("#", "?"));
+      const newToken = urlParams.get('access_token');
+      const expiresIn = urlParams.get('expires_in')
   
+      if (newToken) {
+        // Store the token in localStorage
+        window.localStorage.setItem("token", newToken);
+  
+        // Set the token in the component's state
+        setAccessToken(newToken, expiresIn);
+      }
+    }
+  }, [])
 
   const handleAddToPlaylist = (track) => {
     const isInPlaylist = playlist.some((t) => t.id === track.id);
@@ -31,12 +53,22 @@ function App() {
   const [playlistName, setPlaylistName] = useState("");
   const handleNameChange = (event) => {
     setPlaylistName(event.target.value);
-};
+  };
+
+  const logout = () => {
+    setAccessToken(null, 0); // Clear the token
+    window.localStorage.removeItem("token")
+  }
 
   return (
     <div className="App" style={{ backgroundImage: `url(${background})`}}>
       <header className="App-header" >
         <h1>Ja<span>mmm</span>ing</h1>
+        {getAccessToken() ? (
+          <button onClick={logout}>Logout</button>
+        ):( 
+          <a href={authorizationUrl}>Login to Spotify</a>
+        )}
       </header>
       <div>
         <div className='searchbar'>
