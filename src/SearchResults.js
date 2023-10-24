@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+/* import { useState, useEffect } from "react";
 
 //Each hard-coded array of track objects should contain a name, artist, album, and id property.
 function SearchResults() {
@@ -155,7 +155,7 @@ function SearchResults() {
 
     }, []);
     
-    return { searchData, loading}
+    return { searchData, loading }
 }
 
-export default SearchResults;
+export default SearchResults; */

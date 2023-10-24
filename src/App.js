@@ -1,37 +1,36 @@
 import React, { useEffect, useState } from 'react';
 import './App.css';
-import SearchResults from './SearchResults';
+/* import SearchResults from './SearchResults'; */
 import Playlist from './Playlist';
 import TrackList from './TrackList';
 import background from "./img/HeadphonesGirl.png"
 import { authorizationUrl } from './Authorization';
 import { clearURLParameters, getAccessToken, setAccessToken } from './AccessToken';
+import SearchBar from './SearchBar';
 
 function App() {
-  const { searchData, loading } = SearchResults();
-  const [playlist, setPlaylist] = useState([]);
- 
-  const [token, setToken] = useState("")
+  const [searchData, setSearchData] = useState([])
+  const [loading, setLoading] = useState(false);
+  const [token, setToken] = useState(getAccessToken());
 
   useEffect(() => {
     const hash = window.location.hash
-    let token = window.localStorage.getItem("token");
-
     if (hash) {
       const urlParams = new URLSearchParams(hash.replace("#", "?"));
       const newToken = urlParams.get('access_token');
       const expiresIn = urlParams.get('expires_in')
-  
       if (newToken) {
         // Store the token in localStorage
         window.localStorage.setItem("token", newToken);
   
         // Set the token in the component's state
         setAccessToken(newToken, expiresIn);
+        setToken(newToken)
       }
     }
   }, [])
 
+  const [playlist, setPlaylist] = useState([]);
   const handleAddToPlaylist = (track) => {
     const isInPlaylist = playlist.some((t) => t.id === track.id);
     if(!isInPlaylist) {setPlaylist([...playlist, track])}; 
@@ -58,6 +57,7 @@ function App() {
   const logout = () => {
     setAccessToken(null, 0); // Clear the token
     window.localStorage.removeItem("token");
+    setToken(null);
     clearURLParameters()
   };
 
@@ -65,37 +65,40 @@ function App() {
     <div className="App" style={{ backgroundImage: `url(${background})`}}>
       <header className="App-header" >
         <h1>Ja<span>mmm</span>ing</h1>
-        {getAccessToken() ? (
+        {token ? (
           <button onClick={logout}>Logout</button>
         ):( 
           <a href={authorizationUrl}>Login to Spotify</a>
         )}
       </header>
       <div>
-        <div className='searchbar'>
-          <input type='text'></input>
-          <button>Search</button>
-        </div>
+        <SearchBar setSearchData={setSearchData} setLoading={setLoading} />
         <div className='lists-container'>
             {loading ? (
-              <p>Loading...</p>
+              <div className="tracklist">
+                <h2 style={{alignSelf:"center"}}>Loading...</h2>
+              </div>
+              
             ) : (
+              <>
                 <TrackList tracks={searchData} onAddToPlaylist={handleAddToPlaylist}/>
+                <div className='playlist'>
+                  <input
+                  type="text"
+                  placeholder="Name your playlist"
+                  value={playlistName}
+                  onChange={handleNameChange} 
+                  />
+                  <Playlist 
+                  playlist={playlist}
+                  playlistName={playlistName}
+                  onRemoveFromPlaylist={handleRemoveFromPlaylist}
+                  onSavePlaylist={handleSavePlaylist}
+                  />
+                </div>
+              </>
             )}
-            <div className='playlist'>
-              <input
-              type="text"
-              placeholder="Name your playlist"
-              value={playlistName}
-              onChange={handleNameChange} 
-              />
-              <Playlist 
-              playlist={playlist}
-              playlistName={playlistName}
-              onRemoveFromPlaylist={handleRemoveFromPlaylist}
-              onSavePlaylist={handleSavePlaylist}
-              />
-            </div>   
+               
         </div>              
       </div>
       <footer>

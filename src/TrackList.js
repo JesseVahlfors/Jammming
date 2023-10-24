@@ -24,10 +24,10 @@ function TrackList({ tracks, onAddToPlaylist }) {
     return (
         <div className="tracklist">
             <h2>Results</h2>
-            {tracks.map((track, index) => (
+            {tracks.map((track) => (
                 <div key={track.id} className="track">
                     <div >
-                        <Track  name={track.name} artist={track.artist} album={track.album}  />
+                        <Track  name={track.name} artist={track.artists[0].name} album={track.album.name}  />
                     </div>
                     <button onClick={() => onAddToPlaylist(track)} className="addButton">Add</button>
                 </div>

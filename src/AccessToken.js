@@ -3,8 +3,7 @@ let tokenExpiration = null;
 
 export const setAccessToken = (token, expiresIn) => {
     accessToken = token;
-    tokenExpiration= new Date().getTime() + expiresIn * 1000;
-    //clearURLParameters(); 
+    tokenExpiration = new Date().getTime() + expiresIn * 1000;
 };
 
 export const getAccessToken = () => {
@@ -17,7 +16,6 @@ export const getAccessToken = () => {
         // Token is expired
         return null;
     }
-
     return accessToken;
 }
 
