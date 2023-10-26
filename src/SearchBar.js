@@ -33,7 +33,6 @@ export default function SearchBar (props) {
                 const tracks = data.tracks.items;
                 props.setSearchData(tracks);
                 props.setLoading(false);
-                console.log(tracks)
             } else {
                 console.error("failed to fetch tracks:", response.statusText);
                 props.setLoading(false);

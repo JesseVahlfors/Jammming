@@ -7,6 +7,7 @@ import background from "./img/HeadphonesGirl.png"
 import { authorizationUrl } from './Authorization';
 import { clearURLParameters, getAccessToken, setAccessToken } from './AccessToken';
 import SearchBar from './SearchBar';
+import PlaylistSave from './PlaylistSave';
 
 function App() {
   const [searchData, setSearchData] = useState([])
@@ -40,7 +41,8 @@ function App() {
     const updatedPlaylist = playlist.filter((t) => t.id !== track.id);
     setPlaylist(updatedPlaylist);
   }
-  
+
+  const [playlistName, setPlaylistName] = useState("");
   const handleSavePlaylist = (playlistName) => {
     const playlistUris = playlist.map((track) => track.uri);
     console.log(`Playlist name: ${playlistName}`);
@@ -49,11 +51,13 @@ function App() {
     setPlaylistName("");
   }
   
-  const [playlistName, setPlaylistName] = useState("");
+  
   const handleNameChange = (event) => {
     setPlaylistName(event.target.value);
   };
 
+  const [userID, setUserId] = useState("")
+ 
   const logout = () => {
     setAccessToken(null, 0); // Clear the token
     window.localStorage.removeItem("token");
@@ -65,6 +69,7 @@ function App() {
     <div className="App" style={{ backgroundImage: `url(${background})`}}>
       <header className="App-header" >
         <h1>Ja<span>mmm</span>ing</h1>
+        <PlaylistSave />
         {token ? (
           <button onClick={logout}>Logout</button>
         ):( 
@@ -98,7 +103,7 @@ function App() {
                 </div>
               </>
             )}
-               
+          
         </div>              
       </div>
       <footer>
