@@ -1,4 +1,4 @@
-import react, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { getAccessToken } from "./AccessToken";
 
 
@@ -31,7 +31,7 @@ function PlaylistSave({ onUserIdReceived }) {
             };
 
         getId();
-    }, []);
+    }, [onUserIdReceived]);
 
     return (
         <>

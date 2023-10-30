@@ -55,16 +55,16 @@ h4 {
   color:aliceblue;
 }
 span {
-  color:blueviolet
+  color:rgb(72, 166, 248)
 }
 
 .App {
   background-repeat: no-repeat;
   background-size: cover;
-  height: 100vw;
-  @media (max-width: 768px) {
+  height: auto;
+  /* @media (max-width: 768px) {
     height:auto;
-  }
+  } */
 }
 
 .lists-container {
