@@ -2,7 +2,7 @@ import react, { useState, useEffect } from "react";
 import { getAccessToken } from "./AccessToken";
 
 
-function PlaylistSave() {
+function PlaylistSave({ onUserIdReceived }) {
     const [userId, setUserId] = useState("");
         useEffect(()=> {
             const getId = async () => {
@@ -19,6 +19,7 @@ function PlaylistSave() {
                         if (response.ok) {
                             const data = await response.json();
                             setUserId(data.id);
+                            onUserIdReceived(data.id)
                             //console.log(data.id)   //to check if i get the id string
                         } else {
                             console.error("failed to fetch ID:", response.statusText);
@@ -34,7 +35,7 @@ function PlaylistSave() {
 
     return (
         <>
-            {getAccessToken() ? (<h4>User: {userId}</h4>) : (<></>)}
+            {getAccessToken() && <button>Save to Spotify</button>}
         </>
     )
 }

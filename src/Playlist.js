@@ -20,9 +20,6 @@ function Playlist(props) {
                 <button onClick={() => props.onRemoveFromPlaylist(track)} className="removeButton">X</button>
             </div>
             ))}
-            <button onClick={() => props.onSavePlaylist(props.playlistName)}  className="saveButton">
-                Save To Spotify
-            </button>
         </>
     )
 }

@@ -56,7 +56,10 @@ function App() {
     setPlaylistName(event.target.value);
   };
 
-  const [userID, setUserId] = useState("")
+  const [userId, setUserId] = useState("")
+  const handleUserIdReceived = (receivedUserId) => {
+    setUserId(receivedUserId);
+  }
  
   const logout = () => {
     setAccessToken(null, 0); // Clear the token
@@ -69,9 +72,11 @@ function App() {
     <div className="App" style={{ backgroundImage: `url(${background})`}}>
       <header className="App-header" >
         <h1>Ja<span>mmm</span>ing</h1>
-        <PlaylistSave />
         {token ? (
-          <button onClick={logout}>Logout</button>
+          <>
+            <h4 id={userId}>Logged in: {userId}</h4>
+            <button onClick={logout}>Logout</button>
+          </>
         ):( 
           <a href={authorizationUrl}>Login to Spotify</a>
         )}
@@ -98,8 +103,8 @@ function App() {
                   playlist={playlist}
                   playlistName={playlistName}
                   onRemoveFromPlaylist={handleRemoveFromPlaylist}
-                  onSavePlaylist={handleSavePlaylist}
                   />
+                  <PlaylistSave onUserIdReceived={handleUserIdReceived} onClick={handleSavePlaylist} />
                 </div>
               </>
             )}
