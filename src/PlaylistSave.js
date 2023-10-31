@@ -33,6 +33,42 @@ function PlaylistSave({ onUserIdReceived }) {
         getId();
     }, [onUserIdReceived]);
 
+    const savePlaylist = async (accessToken, userId, playlistName, trackUris) => {
+        const playlistUrl = `https://api.spotify.com/v1/users/${userId}/playlists`
+        const headers = {
+            authorization: `Bearer ${accessToken}`,
+            "Content-Type": "application/json",
+        }
+
+        if(accessToken) {
+            try{
+                const response = await fetch(playlistUrl, {
+                    method: "POST",
+                    headers,
+                    body: JSON.stringify({
+                        name: playlistName,
+                        description: "Made with Jammming",
+                        public: false
+                    }),
+                });
+
+                if(response.ok) {
+                    const data = await response.json();
+                    const playlistId = data.id;
+                    await addTracksToPlaylist(accessToken, playlistId, trackUris);
+                    return playlistId;
+                } else {
+                    console.error("failed to create the playlist:", response.statusText);
+                    return null;
+                }
+            } catch {
+                console.error("network error:", error);
+                return null;
+            }
+        };
+
+    }
+
     return (
         <>
             {getAccessToken() && <button>Save to Spotify</button>}
