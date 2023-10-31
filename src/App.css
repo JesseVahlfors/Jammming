@@ -39,12 +39,16 @@ footer {
 
 header {
   background-color: rgb(43, 5, 78);
+  
+}
+
+header a {
+  color: aliceblue;
 }
 
 h1 {
   text-align: center;
   color:antiquewhite;
-  margin-top: 0em;
 }
 
 h2 {
@@ -61,10 +65,14 @@ span {
 .App {
   background-repeat: no-repeat;
   background-size: cover;
-  height: auto;
-  /* @media (max-width: 768px) {
-    height:auto;
-  } */
+  height: 100vw;
+  @media (max-width: 1024px) {
+    height:1000px;
+  } 
+}
+
+.App-container {
+  padding-bottom: 5em;
 }
 
 .lists-container {
@@ -72,6 +80,19 @@ span {
   flex-direction: row;
   justify-content: space-evenly;
   
+}
+
+.loggedIn {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.loggedOut {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
 }
 
 .playlist {
@@ -93,6 +114,9 @@ span {
   border-color: rgb(72, 166, 248);
   padding: 0.2em;
   margin: 0.2em;
+  @media (max-width: 768px) {
+    font-size: 1em;
+  } 
 }
 
 .playlist input:focus {
@@ -128,7 +152,7 @@ span {
 }
 
 .searchbar input {
-  width: 30%;
+  max-width: 80%;
   background-color: rgb(150, 157, 255, 40%);
   color: aliceblue;
   font-size: 2em;

@@ -71,17 +71,21 @@ function App() {
   return (
     <div className="App" style={{ backgroundImage: `url(${background})`}}>
       <header className="App-header" >
-        <h1>Ja<span>mmm</span>ing</h1>
+       
         {token ? (
-          <>
+          <div className='loggedIn'>
             <h4 id={userId}>Logged in: {userId}</h4>
+            <h1>Ja<span>mmm</span>ing</h1>
             <button onClick={logout}>Logout</button>
-          </>
-        ):( 
-          <a href={authorizationUrl}>Login to Spotify</a>
+          </div>
+        ):(
+          <div className='loggedOut'>
+            <h1>Ja<span>mmm</span>ing</h1> 
+            <a href={authorizationUrl}>Login to Spotify</a>
+          </div>
         )}
       </header>
-      <div>
+      <div className='App-container'>
         <SearchBar setSearchData={setSearchData} setLoading={setLoading} />
         <div className='lists-container'>
             {loading ? (
