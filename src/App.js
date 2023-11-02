@@ -43,12 +43,14 @@ function App() {
   }
 
   const [playlistName, setPlaylistName] = useState("");
+  const [playlistUris, setPlaylistUris] = useState([]);
   const handleSavePlaylist = (playlistName) => {
-    const playlistUris = playlist.map((track) => track.uri);
+    const uris = playlist.map((track) => track.uri);
     console.log(`Playlist name: ${playlistName}`);
     console.log(playlistUris);
     setPlaylist([]);
     setPlaylistName("");
+    setPlaylistUris(uris);
   }
   
   
@@ -105,10 +107,13 @@ function App() {
                   />
                   <Playlist 
                   playlist={playlist}
-                  playlistName={playlistName}
                   onRemoveFromPlaylist={handleRemoveFromPlaylist}
                   />
-                  <PlaylistSave onUserIdReceived={handleUserIdReceived} onClick={handleSavePlaylist} />
+                  {token && <PlaylistSave 
+                  onUserIdReceived={handleUserIdReceived} 
+                  playlistUris={playlistUris}
+                  playlistName={playlistName} 
+                  />}
                 </div>
               </>
             )}
