@@ -7,7 +7,8 @@ import background from "./img/HeadphonesGirl.png"
 import { authorizationUrl } from './Authorization';
 import { clearURLParameters, getAccessToken, setAccessToken } from './AccessToken';
 import SearchBar from './SearchBar';
-import PlaylistSave from './PlaylistSave';
+import GetUserId from './GetUserId';
+import CreatePlaylist from './CreatePlaylist';
 
 function App() {
   const [searchData, setSearchData] = useState([])
@@ -42,27 +43,15 @@ function App() {
     setPlaylist(updatedPlaylist);
   }
 
-  const [playlistName, setPlaylistName] = useState("");
-  const [playlistUris, setPlaylistUris] = useState([]);
-  const handleSavePlaylist = (playlistName) => {
-    const uris = playlist.map((track) => track.uri);
-    console.log(`Playlist name: ${playlistName}`);
-    console.log(playlistUris);
-    setPlaylist([]);
-    setPlaylistName("");
-    setPlaylistUris(uris);
-  }
-  
-  
-  const handleNameChange = (event) => {
-    setPlaylistName(event.target.value);
-  };
-
   const [userId, setUserId] = useState("")
-  const handleUserIdReceived = (receivedUserId) => {
-    setUserId(receivedUserId);
+  const handleUserIdReceived = (id) => {
+    setUserId(id)
   }
  
+  const handlePlaylistErase = () => {
+    setPlaylist([])
+  }
+
   const logout = () => {
     setAccessToken(null, 0); // Clear the token
     window.localStorage.removeItem("token");
@@ -72,11 +61,10 @@ function App() {
 
   return (
     <div className="App" style={{ backgroundImage: `url(${background})`}}>
-      <header className="App-header" >
-       
+      <header className="App-header" >       
         {token ? (
           <div className='loggedIn'>
-            <h4 id={userId}>Logged in: {userId}</h4>
+            <h4>Logged in: <GetUserId onUserIdReceived={handleUserIdReceived} /></h4>
             <h1>Ja<span>mmm</span>ing</h1>
             <button onClick={logout}>Logout</button>
           </div>
@@ -99,21 +87,17 @@ function App() {
               <>
                 <TrackList tracks={searchData} onAddToPlaylist={handleAddToPlaylist}/>
                 <div className='playlist'>
-                  <input
-                  type="text"
-                  placeholder="Name your playlist"
-                  value={playlistName}
-                  onChange={handleNameChange} 
-                  />
                   <Playlist 
-                  playlist={playlist}
-                  onRemoveFromPlaylist={handleRemoveFromPlaylist}
+                    playlist={playlist}
+                    onRemoveFromPlaylist={handleRemoveFromPlaylist}
                   />
-                  {token && <PlaylistSave 
-                  onUserIdReceived={handleUserIdReceived} 
-                  playlistUris={playlistUris}
-                  playlistName={playlistName} 
-                  />}
+                  {token && (
+                  <CreatePlaylist
+                    accessToken={token}
+                    userId={userId}
+                    playlist={playlist}
+                  />
+                  )}
                 </div>
               </>
             )}
