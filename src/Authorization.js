@@ -1,6 +1,6 @@
 const clientId = "70293d0b13ea4ca5b53bc975873c5879"
 const redirectUri = "http://localhost:3000"
-const scope = "user-read-private user-read-email"
+const scope = "user-read-private playlist-modify-private playlist-modify-public user-read-email"
 
 function generateRandomString(length) {
     let result = '';
