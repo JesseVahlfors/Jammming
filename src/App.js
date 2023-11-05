@@ -79,17 +79,15 @@ function App() {
               
             ) : (
               <>
-                <TrackList tracks={searchData} onAddToPlaylist={handleAddToPlaylist}/>
-                <div className='playlist'>
-                  {token && (
-                  <CreatePlaylist
-                    accessToken={token}
-                    userId={userId}
-                    playlist={playlist}
-                    onRemoveFromPlaylist={handleRemoveFromPlaylist}
-                  />
-                  )}
-                </div>
+                {token && (<TrackList tracks={searchData} onAddToPlaylist={handleAddToPlaylist}/>)}
+                {token && (
+                <CreatePlaylist
+                  accessToken={token}
+                  userId={userId}
+                  playlist={playlist}
+                  onRemoveFromPlaylist={handleRemoveFromPlaylist}
+                />
+                )}
               </>
             )}
           

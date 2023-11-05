@@ -40,7 +40,7 @@ const CreatePlaylist = ({ accessToken, userId, playlist, onRemoveFromPlaylist })
     
     return (
         <>
-            <form onSubmit={handlePlaylistSubmit}>
+            <form className='playlist' onSubmit={handlePlaylistSubmit}>
                 <input
                 type="text"
                 placeholder="Name your playlist"
@@ -51,7 +51,7 @@ const CreatePlaylist = ({ accessToken, userId, playlist, onRemoveFromPlaylist })
                 playlist={playlist} 
                 onRemoveFromPlaylist={onRemoveFromPlaylist}
                 />
-                <button type="submit">Save to Spotify</button>
+                <button type="submit" >Save to Spotify</button>
             </form>
         </>
     );

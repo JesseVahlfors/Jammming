@@ -39,7 +39,7 @@ footer {
 
 header {
   background-color: rgb(43, 5, 78);
-  
+  padding: 0em 1em;
 }
 
 header a {
@@ -105,6 +105,10 @@ span {
   color: aliceblue;
 }
 
+.playlist button {
+  align-self: center;
+}
+
 .playlist input {
   background-color: rgb(150, 157, 255, 0%);
   color: aliceblue;
@@ -149,6 +153,7 @@ span {
   flex-direction: column;
   align-items: center;
   margin: 5em auto 5em auto;
+
 }
 
 .searchbar input {
@@ -160,6 +165,7 @@ span {
   border-bottom: solid 2px;
   border-color: rgb(72, 166, 248);
   margin-bottom: 1em;;
+  border-radius: 0.2em;
 }
 
 .searchbar button {
