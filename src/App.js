@@ -45,6 +45,10 @@ function App() {
   const handleUserIdReceived = (id) => {
     setUserId(id)
   }
+
+  const handleOnSuccess = () => {
+    setPlaylist([])
+  }
  
   const logout = () => {
     setAccessToken(null, 0); // Clear the token
@@ -86,6 +90,7 @@ function App() {
                   userId={userId}
                   playlist={playlist}
                   onRemoveFromPlaylist={handleRemoveFromPlaylist}
+                  onSuccess={handleOnSuccess}
                 />
                 )}
               </>

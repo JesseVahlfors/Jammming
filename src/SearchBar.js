@@ -20,7 +20,7 @@ export default function SearchBar (props) {
         
         if(!accessToken) {
             // Handle the case where there is no access token (user not logged in)
-            console.log("User is not logged in.");
+            setSearchMessage("User is not logged in.");
             props.setLoading(false);
             return;
         }
@@ -41,6 +41,7 @@ export default function SearchBar (props) {
                 const tracks = data.tracks.items;
                 props.setSearchData(tracks);
                 props.setLoading(false);
+                setSearchData("")
             } else {
                 console.error("failed to fetch tracks:", response.statusText);
                 props.setLoading(false);

@@ -2,9 +2,19 @@ import addTracksToPlaylist from "./AddTracksToPlaylist"
 import Playlist from "./Playlist";
 import { useState } from "react";
 
-const CreatePlaylist = ({ accessToken, userId, playlist, onRemoveFromPlaylist }) => {
-    const [playlistName, setPlaylistName] = useState("");   
+const CreatePlaylist = ({ accessToken, userId, playlist, onRemoveFromPlaylist, onSuccess }) => {
+    const [playlistName, setPlaylistName] = useState("");
+    const [successMessage, setSuccessMessage] = useState("") 
+
     const handlePlaylistSubmit = async () => {
+        if(!playlistName){ 
+            setSuccessMessage("Please name your playlist!")
+            return;
+        }
+        if(playlist.length < 1) {
+            setSuccessMessage("Please add some tracks!")
+            return;
+        }
         try {
             const uris = playlist.map((track) => track.uri);
             const playlistUrl = `https://api.spotify.com/v1/users/${userId}/playlists`
@@ -28,6 +38,9 @@ const CreatePlaylist = ({ accessToken, userId, playlist, onRemoveFromPlaylist })
                 const data = await response.json();
                 const playlistId = data.id;
                 await addTracksToPlaylist(accessToken, playlistId, uris);
+                setSuccessMessage("Playlist created!")
+                onSuccess();
+                setPlaylistName("");
             } else {
                 const errorMessage = await response.text(); // Get the error message from the response body
                 console.error("Failed to create the playlist:", response.statusText, errorMessage);
@@ -50,8 +63,10 @@ const CreatePlaylist = ({ accessToken, userId, playlist, onRemoveFromPlaylist })
                 <Playlist 
                 playlist={playlist} 
                 onRemoveFromPlaylist={onRemoveFromPlaylist}
+                onSuccess={onSuccess}
                 />
                 <button type="submit" >Save to Spotify</button>
+                {successMessage && <h3 style={{alignSelf:"center"}}>{successMessage}</h3>}
             </form>
         </>
     );
