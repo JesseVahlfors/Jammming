@@ -2,7 +2,8 @@ import { useState } from "react";
 import { getAccessToken } from "./AccessToken";
 
 export default function SearchBar (props) {
-    const [searchData, setSearchData] = useState("")
+    const [searchData, setSearchData] = useState("");
+    const [searchMessage, setSearchMessage] = useState("");
 
     const searchTracks = async (e) => {
         e.preventDefault();
@@ -11,6 +12,11 @@ export default function SearchBar (props) {
         props.setLoading(true);
 
         const accessToken = getAccessToken();
+        if(!searchData) {
+            setSearchMessage("Please enter your search")
+            props.setLoading(false);
+            return;
+        }
         
         if(!accessToken) {
             // Handle the case where there is no access token (user not logged in)
@@ -22,6 +28,7 @@ export default function SearchBar (props) {
         const trackSearchUrl = `https://api.spotify.com/v1/search?q=${encodeURIComponent(searchData)}&type=track`;
 
         try{
+            setSearchMessage("")
             const response = await fetch(trackSearchUrl, {
                 method: "GET",
                 headers: {
@@ -47,12 +54,14 @@ export default function SearchBar (props) {
     return (
         <>
             <form onSubmit={searchTracks} className='searchbar'>
+                {searchMessage && <p className="searchMessage">{searchMessage}</p>}
                 <input
                  type='text'
                  value={searchData}
                  onChange={e => setSearchData(e.target.value)}
                  ></input>
                 <button type='submit'>Search</button>
+               
             </form>    
         </>
     )

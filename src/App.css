@@ -169,6 +169,11 @@ span {
   border-radius: 1.5em;
 }
 
+.searchMessage {
+  color: aliceblue;
+  font-size: 1.5em;
+
+}
 .track, .playlistTrack {
   display: flex;
   align-items: center;
