@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import './App.css';
-/* import SearchResults from './SearchResults'; */
-import Playlist from './Playlist';
 import TrackList from './TrackList';
 import background from "./img/HeadphonesGirl.png"
 import { authorizationUrl } from './Authorization';
@@ -48,10 +46,6 @@ function App() {
     setUserId(id)
   }
  
-  const handlePlaylistErase = () => {
-    setPlaylist([])
-  }
-
   const logout = () => {
     setAccessToken(null, 0); // Clear the token
     window.localStorage.removeItem("token");
@@ -87,15 +81,12 @@ function App() {
               <>
                 <TrackList tracks={searchData} onAddToPlaylist={handleAddToPlaylist}/>
                 <div className='playlist'>
-                  <Playlist 
-                    playlist={playlist}
-                    onRemoveFromPlaylist={handleRemoveFromPlaylist}
-                  />
                   {token && (
                   <CreatePlaylist
                     accessToken={token}
                     userId={userId}
                     playlist={playlist}
+                    onRemoveFromPlaylist={handleRemoveFromPlaylist}
                   />
                   )}
                 </div>

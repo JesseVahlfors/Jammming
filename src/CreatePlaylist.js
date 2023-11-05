@@ -1,19 +1,12 @@
 import addTracksToPlaylist from "./AddTracksToPlaylist"
+import Playlist from "./Playlist";
 import { useState } from "react";
 
-const CreatePlaylist = ({ accessToken, userId, playlist }) => {
-    /*   if(!userId) {
-        setError("User ID is not available yet. Please wait.")
-    }   */
-    const [playlistName, setPlaylistName] = useState("");
-    const [playlistUris, setPlaylistUris] = useState([]);   
+const CreatePlaylist = ({ accessToken, userId, playlist, onRemoveFromPlaylist }) => {
+    const [playlistName, setPlaylistName] = useState("");   
     const handlePlaylistSubmit = async () => {
         try {
             const uris = playlist.map((track) => track.uri);
-            /* console.log(`Playlist name: ${playlistName}`);
-            console.log(uris);
-            console.log("user id:" + userId) */
-   
             const playlistUrl = `https://api.spotify.com/v1/users/${userId}/playlists`
             const headers = {
             authorization: `Bearer ${accessToken}`,
@@ -44,6 +37,7 @@ const CreatePlaylist = ({ accessToken, userId, playlist }) => {
         };
     }
     
+    
     return (
         <>
             <form onSubmit={handlePlaylistSubmit}>
@@ -52,6 +46,10 @@ const CreatePlaylist = ({ accessToken, userId, playlist }) => {
                 placeholder="Name your playlist"
                 value={playlistName}
                 onChange={(e) => setPlaylistName(e.target.value)}
+                />
+                <Playlist 
+                playlist={playlist} 
+                onRemoveFromPlaylist={onRemoveFromPlaylist}
                 />
                 <button type="submit">Save to Spotify</button>
             </form>
