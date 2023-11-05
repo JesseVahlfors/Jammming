@@ -25,3 +25,23 @@ export function clearURLParameters() {
     const newUrl = window.location.href.split('#')[0]; // Remove fragment
     window.location.replace(newUrl)
   }
+
+function logOutAfterExpiration() {
+    if(accessToken && new Date().getTime() > tokenExpiration) {
+        clearURLParameters();
+        accessToken = null;
+        tokenExpiration = null;
+    }
+}
+
+function checkAccessTokenExpiration() {
+    let interval;
+    if (!accessToken) {
+        clearInterval(interval);
+    } else {
+       interval = setInterval(logOutAfterExpiration, 60000);
+    }
+   
+}
+
+checkAccessTokenExpiration();
