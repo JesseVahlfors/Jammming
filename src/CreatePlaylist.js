@@ -24,6 +24,7 @@ const CreatePlaylist = ({ accessToken, userId, playlist, onRemoveFromPlaylist, o
             clearSuccessMessage()
             return;
         }
+        setSuccessMessage("Saving...");
         try {
             const uris = playlist.map((track) => track.uri);
             const playlistUrl = `https://api.spotify.com/v1/users/${userId}/playlists`
@@ -47,16 +48,19 @@ const CreatePlaylist = ({ accessToken, userId, playlist, onRemoveFromPlaylist, o
                 const data = await response.json();
                 const playlistId = data.id;
                 await addTracksToPlaylist(accessToken, playlistId, uris);
-                setSuccessMessage("Playlist created!")
-                clearSuccessMessage()
+                setSuccessMessage("Playlist created!");
+                clearSuccessMessage();
                 onSuccess();
                 setPlaylistName("");
             } else {
                 const errorMessage = await response.text(); // Get the error message from the response body
                 console.error("Failed to create the playlist:", response.statusText, errorMessage);
+                setSuccessMessage("Something went wrong... try again.")
+                clearSuccessMessage();
             }
         } catch(error) {
             console.error("Network error", error);
+            clearSuccessMessage();
         };
     }
     

@@ -21,6 +21,7 @@ export default function SearchBar (props) {
         if(!accessToken) {
             // Handle the case where there is no access token (user not logged in)
             setSearchMessage("User is not logged in.");
+            setSearchData("")
             props.setLoading(false);
             return;
         }

@@ -99,7 +99,7 @@ function App() {
         </div>              
       </div>
       <footer>
-        <h3>Made by Jesse Vahlfors 2023</h3>
+        <h3>Made by <a href='https://github.com/JesseVahlfors'>Jesse Vahlfors</a> 2023</h3>
       </footer>  
     </div>    
   );

@@ -63,12 +63,12 @@ span {
 }
 
 .App {
-  background-repeat: no-repeat;
+  background: no-repeat center center fixed;
   background-size: cover;
-  height: 100vw;
+  min-height: 100vh;
   @media (max-width: 1024px) {
-    height:1000px;
-  } 
+  height: auto; 
+  }
 }
 
 .App-container {
@@ -87,6 +87,18 @@ span {
   align-items: center;
   flex-direction: row;
   justify-content: space-between;
+}
+
+.loggedIn h4 {
+  @media (max-width: 500px) {
+   display:none; 
+  }
+}
+
+.loggedIn button {
+  @media (max-width: 500px) {
+    min-width: unset;
+   }
 }
 
 .loggedOut {
@@ -118,8 +130,8 @@ span {
   border-color: rgb(72, 166, 248);
   padding: 0.2em;
   margin: 0.2em;
-  @media (max-width: 768px) {
-    font-size: 1em;
+  @media (max-width: 700px) {
+    font-size: 1.5em;
   } 
 }
 
@@ -187,6 +199,10 @@ span {
   margin: 0em 1em 1em 1em;
   border-bottom: solid 1px;
   border-color: rgb(72, 166, 248);
+  @media (max-width: 700px) {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
 }
 
 .track h3, .playlist h3 {
