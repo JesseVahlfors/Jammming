@@ -5,8 +5,6 @@ const addTracksToPlaylist = async (accessToken, playlistId, uris) => {
         authorization: `Bearer ${accessToken}`,
         "Content-Type": "application/json",
     }
-
-    console.log("tracks:" + uris )
     try{
         const response = await fetch(addTracksUrl, {
             method: "POST",

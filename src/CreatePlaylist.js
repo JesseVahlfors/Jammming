@@ -6,13 +6,22 @@ const CreatePlaylist = ({ accessToken, userId, playlist, onRemoveFromPlaylist, o
     const [playlistName, setPlaylistName] = useState("");
     const [successMessage, setSuccessMessage] = useState("") 
 
-    const handlePlaylistSubmit = async () => {
+    const clearSuccessMessage = () => {
+        setTimeout(()=> {
+            setSuccessMessage("")
+        }, 10000)
+    }
+
+    const handlePlaylistSubmit = async (event) => {
+        event.preventDefault()
         if(!playlistName){ 
             setSuccessMessage("Please name your playlist!")
+            clearSuccessMessage()
             return;
         }
         if(playlist.length < 1) {
             setSuccessMessage("Please add some tracks!")
+            clearSuccessMessage()
             return;
         }
         try {
@@ -30,7 +39,7 @@ const CreatePlaylist = ({ accessToken, userId, playlist, onRemoveFromPlaylist, o
                 body: JSON.stringify({
                     name: playlistName,
                     description: "Made with Jammming",
-                    public: true
+                    public: false
                 }),
             });
 
@@ -39,6 +48,7 @@ const CreatePlaylist = ({ accessToken, userId, playlist, onRemoveFromPlaylist, o
                 const playlistId = data.id;
                 await addTracksToPlaylist(accessToken, playlistId, uris);
                 setSuccessMessage("Playlist created!")
+                clearSuccessMessage()
                 onSuccess();
                 setPlaylistName("");
             } else {

@@ -1,5 +1,6 @@
 let accessToken = null;
 let tokenExpiration = null;
+let interval = null;
 
 export const setAccessToken = (token, expiresIn) => {
     accessToken = token;
@@ -35,10 +36,10 @@ function logOutAfterExpiration() {
 }
 
 function checkAccessTokenExpiration() {
-    let interval;
     if (!accessToken) {
         clearInterval(interval);
     } else {
+        clearInterval(interval);
        interval = setInterval(logOutAfterExpiration, 60000);
     }
    
