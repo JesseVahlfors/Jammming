@@ -6,13 +6,14 @@ Short description of your project.
 
 - [Purpose](#purpose)
 - [Features](#features)
+- [Usage](#usage)
 - [Technologies Used](#technologies-used)
 - [Screenshots](#screenshots)
 - [Future Work](#future-work)
 
 ## Purpose
 
-### Usage
+## Usage
 
 Explain how to use your application.
 
@@ -26,7 +27,7 @@ Explain how to use your application.
 
 ## Screenshots
 
-Include screenshots or a link to a live demo (if applicable).
+![Jammming app picture](./src/img/Jamming%20project%20picture.png)
 
 ## Future Work
 
