@@ -67,7 +67,7 @@ const CreatePlaylist = ({ accessToken, userId, playlist, onRemoveFromPlaylist, o
     
     return (
         <>
-            <form className='playlist' onSubmit={handlePlaylistSubmit}>
+            <form className='playlist' onSubmit={handlePlaylistSubmit} data-testid="create-playlist">
                 <input
                 type="text"
                 placeholder="Name your playlist"

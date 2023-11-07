@@ -111,10 +111,10 @@ span {
   display: flex;
   flex-direction: column;
   background-color: rgb(138, 43, 226, 50%);
-  width: 40%;
-  max-width: 30em;
+  width: 35%;
   border-radius: 1em;
   color: aliceblue;
+  box-shadow: 0 4px 2px 2px #090831;
 }
 
 .playlist button {
@@ -218,10 +218,10 @@ span {
   display: flex;
   flex-direction: column;
   background-color: rgb(138, 43, 226, 50%);
-  width: 50%;
-  max-width: 30em;
+  width: 45%;
   border-radius: 1em;
   color: aliceblue;
+  box-shadow: 0 4px 2px 2px #090831;
 }
 
 
