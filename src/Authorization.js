@@ -1,5 +1,5 @@
-const clientId = "70293d0b13ea4ca5b53bc975873c5879"
-const redirectUri = "http://localhost:3000"
+const clientId = "70293d0b13ea4ca5b53bc975873c5879" //You need to set this to your own spotify client Id
+const redirectUri = "http://localhost:3000"  //you need to set this redirect URIs to be the same as the one on spotify app dashboard. 
 const scope = "user-read-private playlist-modify-private playlist-modify-public user-read-email"
 
 function generateRandomString(length) {
@@ -24,7 +24,3 @@ authorizationUrl += `&scope=${scope}`
 authorizationUrl += `&redirect_uri=${redirectUri}`
 authorizationUrl += `&state=${state}`;
 
-
-/* const accessToken = window.location.href.get("access_token")
-const expiresIn = window.location.href.get("expires_in")
-setAccessToken(accessToken, expiresIn); */
