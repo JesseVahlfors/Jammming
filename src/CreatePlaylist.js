@@ -1,5 +1,5 @@
 import addTracksToPlaylist from "./AddTracksToPlaylist"
-import Playlist from "./Playlist";
+import Playlist from "./Playlist/Playlist";
 import { useState } from "react";
 
 const CreatePlaylist = ({ accessToken, userId, playlist, onRemoveFromPlaylist, onSuccess }) => {

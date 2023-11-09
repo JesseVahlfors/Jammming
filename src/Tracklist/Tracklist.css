@@ -1,0 +1,24 @@
+.tracklist {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: aliceblue; 
+    grid-area: 1 / 2 / 2 / 5; 
+}
+.tracklist h2 {
+    height: 3em;
+    box-sizing: content-box;
+    margin: 2px;
+}    
+.tracklist-container {
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+    grid-template-rows: 1fr;
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+    align-items: center
+   
+}
+
+.tracklist-container:nth-child(1) { grid-area: 1 / 1 / 2 / 2; }
+.tracklist-container:nth-child(2) { grid-area: 1 / 2 / 2 / 3; }

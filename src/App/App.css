@@ -5,8 +5,8 @@ html, body {
 }
 
 button {
-  min-width: 130px;
-  height: 40px;
+  min-width: 6em;
+  height: 3em;
   color: #fff;
   padding: 5px 10px;
   font-weight: bold;
@@ -76,10 +76,11 @@ span {
 }
 
 .lists-container {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-evenly;
-  
+  display: grid;
+  grid-template-columns: repeat(9, 1fr);
+  grid-template-rows: 1fr;
+  grid-column-gap: 5px;
+  grid-row-gap: 5px;  
 }
 
 .loggedIn {
@@ -107,54 +108,6 @@ span {
   flex-direction: column;
 }
 
-.playlist {
-  display: flex;
-  flex-direction: column;
-  background-color: rgb(138, 43, 226, 50%);
-  width: 35%;
-  border-radius: 1em;
-  color: aliceblue;
-  box-shadow: 0 4px 2px 2px #090831;
-}
-
-.playlist button {
-  align-self: center;
-}
-
-.playlist input {
-  background-color: rgb(150, 157, 255, 0%);
-  color: aliceblue;
-  font-size: 1.5em;
-  border: none;
-  border-bottom: solid 2px;
-  border-color: rgb(72, 166, 248);
-  padding: 0.2em;
-  margin: 0.2em;
-  @media (max-width: 700px) {
-    font-size: 1.5em;
-  } 
-}
-
-.playlist input:focus {
-  outline: none;
-}
-
-.playlistItems {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.playlistName {
-  display: block;
-  width: 25em;
-  height: 3em;
-}
-
-.removeButton {
-  width: 40px;
-  min-width: auto;
-}
 .saveButton {
   align-self: center;
   width: 12em;
@@ -191,37 +144,6 @@ span {
   color: aliceblue;
   font-size: 1.5em;
 
-}
-.track, .playlistTrack {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin: 0em 1em 1em 1em;
-  border-bottom: solid 1px;
-  border-color: rgb(72, 166, 248);
-  @media (max-width: 700px) {
-    flex-wrap: wrap;
-    justify-content: center;
-  }
-}
-
-.track h3, .playlist h3 {
-  margin: 0em;
-}
-
-.track p, .playlistTrack p {
-  color: rgb(203, 207, 211);
-  margin: 0em;
-}
-
-.tracklist {
-  display: flex;
-  flex-direction: column;
-  background-color: rgb(138, 43, 226, 50%);
-  width: 45%;
-  border-radius: 1em;
-  color: aliceblue;
-  box-shadow: 0 4px 2px 2px #090831;
 }
 
 
