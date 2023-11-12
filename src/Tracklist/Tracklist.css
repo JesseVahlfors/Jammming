@@ -1,9 +1,13 @@
+@import url(../Utilities/StylingVariables.css);
+
 .tracklist {
     display: flex;
     flex-direction: column;
     align-items: center;
     color: aliceblue; 
-    grid-area: 1 / 2 / 2 / 5; 
+    grid-area: 1 / 3 / 2 / 5;
+    gap: 8px;
+    
 }
 .tracklist h2 {
     height: 3em;
@@ -12,12 +16,18 @@
 }    
 .tracklist-container {
     display: grid;
-    grid-template-columns: 3fr 1fr;
+    grid-template-columns: 5fr 1fr;
     grid-template-rows: 1fr;
     grid-column-gap: 0px;
     grid-row-gap: 0px;
-    align-items: center
-   
+    align-items: center;
+    border-radius: 1em;
+}
+
+.tracklist-container button {
+    max-width: none;
+    height: 100%;
+    box-shadow: 0 4px 2px 2px hsla(241, 72%, 11%, 0.637);  
 }
 
 .tracklist-container:nth-child(1) { grid-area: 1 / 1 / 2 / 2; }

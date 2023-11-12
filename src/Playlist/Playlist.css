@@ -1,53 +1,61 @@
+@import url(../Utilities/StylingVariables.css);
+
 .playlist {
     display: flex;
     flex-direction: column;
     align-items: center;
     border-radius: 1em;
     color: aliceblue;
-    grid-area: 1 / 6 / 2 / 9;
+    grid-area: 1 / 6 / 2 / 8;
 }
 
 .playlist button {
-align-self: center;
+    align-self: center;
+    background-color: var(--tertiary-color);
 }
 
 .playlist input {
-background-color: rgb(150, 157, 255, 0%);
-color: aliceblue;
-font-size: 1.5em;
-border: none;
-border-bottom: solid 2px;
-border-color: rgb(72, 166, 248);
-box-sizing: content-box;
-height: 3em;
-@media (max-width: 700px) {
+    background-color: rgba(255, 150, 211, 0);
+    color: aliceblue;
     font-size: 1.5em;
-} 
+    border: none;
+    border-bottom: solid 2px;
+    border-color: var(--accent-color);
+    box-sizing: content-box;
+    height: 3em;
+    @media (max-width: 700px) {
+        font-size: 1.5em;
+    } 
 }
 
 .playlist input:focus {
-outline: none;
+    outline: none;
 }
 
 .playlistItems {
-display: flex;
-flex-direction: column;
-align-items: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .playlistName {
-display: block;
-width: 25em;
-height: 3em;
+    display: block;
+    width: 25em;
+    height: 3em;
 }
 
 .playlistTrack {
-display: grid;
-grid-template-columns: 1fr 3fr;
-grid-template-rows: 1fr;
-grid-column-gap: 0px;
-grid-row-gap: 0px;
-align-items: center
+    display: grid;
+    grid-template-columns: 1fr 5fr;
+    grid-template-rows: 1fr;
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+    align-items: center;
+    border-radius: 1em; 
 }
-.playlistTrack:nth-child(1) { grid-area: 1 / 2 / 2 / 3; }
-.playlistTrack:nth-child(2) { grid-area: 1 / 1 / 2 / 2; }
+
+.playlistTrack button {
+    height: 100%;
+    max-width: none;
+    box-shadow: 0 4px 2px 2px hsla(241, 72%, 11%, 0.637);  
+}

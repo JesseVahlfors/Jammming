@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { getAccessToken } from "./AccessToken";
+import { getAccessToken, checkAccessTokenExpiration } from "./AccessToken";
 
 export default function SearchBar (props) {
     const [searchData, setSearchData] = useState("");
@@ -43,6 +43,7 @@ export default function SearchBar (props) {
                 props.setSearchData(tracks);
                 props.setLoading(false);
                 setSearchData("")
+                checkAccessTokenExpiration();
             } else {
                 console.error("failed to fetch tracks:", response.statusText);
                 props.setLoading(false);

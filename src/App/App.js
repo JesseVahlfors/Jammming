@@ -58,7 +58,7 @@ function App() {
   };
 
   return (
-    <div className="App" style={{ backgroundImage: `url(${background})`}}>
+    <div className="App" >
       <header className="App-header" >       
         {token ? (
           <div className='loggedIn'>
@@ -73,31 +73,35 @@ function App() {
           </div>
         )}
       </header>
-      <div className='App-container'>
-        <SearchBar setSearchData={setSearchData} setLoading={setLoading} />
-        <div className='lists-container'>
-            {loading ? (
-              <div className="tracklist">
-                <h2 style={{alignSelf:"center"}}>Loading...</h2>
-              </div>
-              
-            ) : (
-              <>
-                {token && (<TrackList tracks={searchData} onAddToPlaylist={handleAddToPlaylist}/>)}
-                {token && (
-                <CreatePlaylist
-                  accessToken={token}
-                  userId={userId}
-                  playlist={playlist}
-                  onRemoveFromPlaylist={handleRemoveFromPlaylist}
-                  onSuccess={handleOnSuccess}
-                />
-                )}
-              </>
-            )}
-          
-        </div>              
-      </div>
+      <main className='App-container'>
+        <figure className='image-container'>
+          <img src={background} alt='Girl with headphones' />
+        </figure> 
+        <section className='section'>
+          <SearchBar setSearchData={setSearchData} setLoading={setLoading} />
+          <div className='lists-container'>
+              {loading ? (
+                <div className="tracklist">
+                  <h2 style={{alignSelf:"center"}}>Loading...</h2>
+                </div>
+                
+              ) : (
+                <>
+                  {token && (<TrackList tracks={searchData} onAddToPlaylist={handleAddToPlaylist}/>)}
+                  {token && (
+                  <CreatePlaylist
+                    accessToken={token}
+                    userId={userId}
+                    playlist={playlist}
+                    onRemoveFromPlaylist={handleRemoveFromPlaylist}
+                    onSuccess={handleOnSuccess}
+                  />
+                  )}
+                </>
+              )}        
+          </div> 
+        </section>             
+      </main>
       <footer>
         <h3>Made by <a href='https://github.com/JesseVahlfors'>Jesse Vahlfors</a> 2023</h3>
       </footer>  

@@ -1,13 +1,13 @@
+@import url(../Utilities/StylingVariables.css);
+
 html, body {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  /* background-color: var(--main-color); */
 }
 
 button {
-  min-width: 6em;
-  height: 3em;
-  color: #fff;
   padding: 5px 10px;
   font-weight: bold;
   cursor: pointer;
@@ -16,18 +16,34 @@ button {
   display: inline-block;
   outline: none;
   border-radius: 20px;
-  border: 2px solid rgb(72, 166, 248);
-  background: rgba(92, 43, 226, 0.2);
+  border: 2px solid var(--accent-color);
+  background: var(--tertiary-color);
 }
 
 button:hover {
-  background: rgb(151, 88, 209);
+  background: var(--secondary-color);
+}
+
+
+
+header {
+  background-color: var(--secondary-color);
+  padding: 0em 1em;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 1;
+  border-bottom: 1px solid var(--accent-color);
+}
+
+header a {
+  color: aliceblue;
 }
 
 footer {
   color:aliceblue;
-  background-color: rgb(43, 5, 78);
-  border-top: 1px solid #969dff;
+  background-color: var(--secondary-color);
+  border-top: 1px solid var(--accent-color);
   text-align: center;
   padding-bottom: 15px;
   position: fixed;
@@ -37,13 +53,8 @@ footer {
   width: 100%;
 }
 
-header {
-  background-color: rgb(43, 5, 78);
-  padding: 0em 1em;
-}
-
-header a {
-  color: aliceblue;
+footer a {
+  color: var(--accent-color)
 }
 
 h1 {
@@ -59,20 +70,49 @@ h4 {
   color:aliceblue;
 }
 span {
-  color:rgb(72, 166, 248)
-}
-
-.App {
-  background: no-repeat center center fixed;
-  background-size: cover;
-  min-height: 100vh;
-  @media (max-width: 1024px) {
-  height: auto; 
-  }
+  color:var(--accent-color);
 }
 
 .App-container {
-  padding-bottom: 5em;
+}
+
+.section {
+  transform-origin: center top;
+  transform: scaleY(calc(1 - var(--scale)));
+}
+
+.section > * {
+  transform-origin: center top;
+  transform: scaleY(calc(1 / (1 - var(--scale))));
+}
+
+.image-container {
+  position: sticky;
+  top: 0;
+  margin: 0;
+  z-index: -2;
+}
+
+.image-container img {
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  -o-object-fit: cover;
+  object-fit: cover;
+  object-position: center top;
+  height: auto;
+}
+
+.image-container::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 50%;
+  background: linear-gradient(/* ... */);
 }
 
 .lists-container {
@@ -88,6 +128,7 @@ span {
   align-items: center;
   flex-direction: row;
   justify-content: space-between;
+  padding: 0em 1em;
 }
 
 .loggedIn h4 {
@@ -123,12 +164,12 @@ span {
 
 .searchbar input {
   max-width: 80%;
-  background-color: rgb(150, 157, 255, 40%);
+  background-color: var(--tertiary-color);
   color: aliceblue;
   font-size: 2em;
   border: none;
   border-bottom: solid 2px;
-  border-color: rgb(72, 166, 248);
+  border-color: var(--accent-color);
   margin-bottom: 1em;;
   border-radius: 0.2em;
 }

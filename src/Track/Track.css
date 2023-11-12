@@ -1,21 +1,35 @@
+@import url(../Utilities/StylingVariables.css);
+
 .container {
     display: grid;
     grid-template-columns: repeat(8, 1fr);
     grid-template-rows: repeat(2, 1fr);
     grid-column-gap: 5px;
     grid-row-gap: 5px;
-    box-shadow: 0 4px 2px 2px #090831;
     border-radius: 1em;
+    border: 2px solid var(--accent-color);
     align-items: center;
-    background-color: rgb(138, 43, 226, 50%);
+    box-shadow: 0 4px 2px 2px hsla(241, 72%, 11%, 0.637);  
+    background-color: var(--secondary-color);
+    @media (max-width: 500px) {
+        display: flex;
+        flex-direction: column;
+    }
 }
 
 .image { 
     grid-area: 1 / 1 / 3 / 4;;
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: contain;
     border-radius: 1em;
 }
-.name { grid-area: 1 / 4 / 2 / 9; }
-.artist { grid-area: 2 / 4 / 3 / 9; }
+.name { 
+    grid-area: 1 / 4 / 2 / 9;
+    margin: 0;    
+}
+
+.artist {
+    grid-area: 2 / 4 / 3 / 9;
+    margin: 0;
+}
