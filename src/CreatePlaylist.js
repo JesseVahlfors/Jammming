@@ -3,7 +3,7 @@ import Playlist from "./Playlist/Playlist";
 import { useState } from "react";
 
 const CreatePlaylist = ({ accessToken, userId, playlist, onRemoveFromPlaylist, onSuccess }) => {
-    const [playlistName, setPlaylistName] = useState("");
+    const [playlistName, setPlaylistName] = useState("Name Me!");
     const [successMessage, setSuccessMessage] = useState("") 
 
     const clearSuccessMessage = () => {
@@ -51,7 +51,7 @@ const CreatePlaylist = ({ accessToken, userId, playlist, onRemoveFromPlaylist, o
                 setSuccessMessage("Playlist created!");
                 clearSuccessMessage();
                 onSuccess();
-                setPlaylistName("");
+                setPlaylistName("Name Me!");
             } else {
                 const errorMessage = await response.text(); // Get the error message from the response body
                 console.error("Failed to create the playlist:", response.statusText, errorMessage);
@@ -70,7 +70,6 @@ const CreatePlaylist = ({ accessToken, userId, playlist, onRemoveFromPlaylist, o
             <form className='playlist' onSubmit={handlePlaylistSubmit} data-testid="create-playlist">
                 <input
                 type="text"
-                placeholder="Name your playlist"
                 value={playlistName}
                 onChange={(e) => setPlaylistName(e.target.value)}
                 />

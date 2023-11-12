@@ -7,29 +7,40 @@
     border-radius: 1em;
     color: aliceblue;
     grid-area: 1 / 6 / 2 / 8;
+    gap: 8px;
 }
 
 .playlist button {
     align-self: center;
     background-color: var(--tertiary-color);
+    box-shadow: 20px 20px 4px 0px rgba(0, 0, 0, 0.25);
 }
 
+.playlist button:active {
+    position:relative;
+	top:10px;
+    left: 10px;
+}
+
+
 .playlist input {
-    background-color: rgba(255, 150, 211, 0);
+    background-color: var(--secondary-color);
     color: aliceblue;
     font-size: 1.5em;
     border: none;
     border-bottom: solid 2px;
     border-color: var(--accent-color);
+    border-radius: 1rem;
     box-sizing: content-box;
-    height: 3em;
+    height: 2rem;
+    text-align: center;
     @media (max-width: 700px) {
         font-size: 1.5em;
     } 
 }
 
 .playlist input:focus {
-    outline: none;
+    outline-color: var(--accent-color);
 }
 
 .playlistItems {
@@ -46,16 +57,22 @@
 
 .playlistTrack {
     display: grid;
+    width: 20.75rem;
+    height: 12.5rem;
     grid-template-columns: 1fr 5fr;
     grid-template-rows: 1fr;
     grid-column-gap: 0px;
     grid-row-gap: 0px;
     align-items: center;
-    border-radius: 1em; 
+    border-radius: 1em;
 }
 
+
 .playlistTrack button {
-    height: 100%;
     max-width: none;
-    box-shadow: 0 4px 2px 2px hsla(241, 72%, 11%, 0.637);  
+    width: 2rem;
+    height: 12.5rem;
+    border-radius: 0rem 1.25rem 1.25rem 0rem;
+    border: 1px solid #75FFF7;
+    background: #6DE2FC;
 }

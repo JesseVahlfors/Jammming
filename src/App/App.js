@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import './App.css';
 import TrackList from '../Tracklist/TrackList';
-import background from "../img/HeadphonesGirl.png"
+import background from "../img/HeadphonesGirl2.jpg"
 import { authorizationUrl } from '../Authorization';
 import { clearURLParameters, getAccessToken, setAccessToken } from '../AccessToken';
 import SearchBar from '../SearchBar';

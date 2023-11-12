@@ -14,6 +14,7 @@ When returning the list of tracks, make sure to set a unique key attribute for e
 import React from "react";
 import Track from "../Track/Track";
 import "./Tracklist.css"
+import {add} from "../Icons/Icons"
 //Each hard-coded array of track objects should contain a name, artist, album, and id property.
 
 
@@ -28,7 +29,7 @@ function TrackList({ tracks, onAddToPlaylist }) {
             {tracks.map((track) => (
                 <div key={track.id} className="tracklist-container">
                     <Track  name={track.name} artist={track.artists[0].name} album={track.album.name}  image={track.album.images[1].url} />
-                    <button onClick={() => onAddToPlaylist(track)} ></button>
+                    <button onClick={() => onAddToPlaylist(track)} >{add}</button>
                 </div>
             ))}
         </div>

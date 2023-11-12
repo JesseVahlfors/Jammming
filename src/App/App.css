@@ -7,19 +7,6 @@ html, body {
   /* background-color: var(--main-color); */
 }
 
-button {
-  padding: 5px 10px;
-  font-weight: bold;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  position: relative;
-  display: inline-block;
-  outline: none;
-  border-radius: 20px;
-  border: 2px solid var(--accent-color);
-  background: var(--tertiary-color);
-}
-
 button:hover {
   background: var(--secondary-color);
 }
@@ -91,6 +78,8 @@ span {
   top: 0;
   margin: 0;
   z-index: -2;
+  height: 100vh;
+  overflow: hidden;
 }
 
 .image-container img {
@@ -102,18 +91,9 @@ span {
   -o-object-fit: cover;
   object-fit: cover;
   object-position: center top;
-  height: auto;
+  min-height: 100vh;
 }
 
-.image-container::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 50%;
-  background: linear-gradient(/* ... */);
-}
 
 .lists-container {
   display: grid;
@@ -121,6 +101,7 @@ span {
   grid-template-rows: 1fr;
   grid-column-gap: 5px;
   grid-row-gap: 5px;  
+  align-items: start;
 }
 
 .loggedIn {
@@ -159,12 +140,12 @@ span {
   flex-direction: column;
   align-items: center;
   margin: 5em auto 5em auto;
-
+  padding-top: 5em;
 }
 
 .searchbar input {
   max-width: 80%;
-  background-color: var(--tertiary-color);
+  background-color: var(--secondary-color);
   color: aliceblue;
   font-size: 2em;
   border: none;
