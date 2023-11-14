@@ -12,7 +12,9 @@ Consider using state to store information such as your search results array, all
 Use JavaScript’s map() method to iterate over arrays and render multiple components dynamically.
 When returning the list of tracks, make sure to set a unique key attribute for each track. This will help React efficiently update the DOM when changes occur.*/
 import React from "react";
-import Track from "./Track";
+import Track from "../Track/Track";
+import "./Tracklist.css"
+import {add} from "../Icons/Icons"
 //Each hard-coded array of track objects should contain a name, artist, album, and id property.
 
 
@@ -25,11 +27,9 @@ function TrackList({ tracks, onAddToPlaylist }) {
         <div className="tracklist">
             <h2>Results</h2>
             {tracks.map((track) => (
-                <div key={track.id} className="track">
-                    <div >
-                        <Track  name={track.name} artist={track.artists[0].name} album={track.album.name}  />
-                    </div>
-                    <button onClick={() => onAddToPlaylist(track)} className="addButton">Add</button>
+                <div key={track.id} className="tracklist-container">
+                    <Track  name={track.name} artist={track.artists[0].name} album={track.album.name}  image={track.album.images[1].url} />
+                    <button onClick={() => onAddToPlaylist(track)} >{add}</button>
                 </div>
             ))}
         </div>

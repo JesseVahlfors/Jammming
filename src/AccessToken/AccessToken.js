@@ -35,7 +35,7 @@ function logOutAfterExpiration() {
     }
 }
 
-function checkAccessTokenExpiration() {
+export function checkAccessTokenExpiration() {
     if (!accessToken) {
         clearInterval(interval);
     } else {
@@ -45,4 +45,3 @@ function checkAccessTokenExpiration() {
    
 }
 
-checkAccessTokenExpiration();
