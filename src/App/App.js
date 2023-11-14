@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import './App.css';
-import TrackList from './TrackList';
+import TrackList from '../Tracklist/TrackList';
 import background from "./img/HeadphonesGirl.png"
 import { authorizationUrl } from './Authorization';
-import { clearURLParameters, getAccessToken, setAccessToken } from './AccessToken';
-import SearchBar from './SearchBar';
+import { clearURLParameters, getAccessToken, setAccessToken } from '..AccessToken/AccessToken';
+import SearchBar from '../SearchBar';
 import GetUserId from './GetUserId';
 import CreatePlaylist from './CreatePlaylist';
 

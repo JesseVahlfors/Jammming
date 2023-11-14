@@ -24,6 +24,11 @@ button:hover {
   background: rgb(151, 88, 209);
 }
 
+button:active {
+  position: relative;
+  top: 10px;
+}
+
 footer {
   color:aliceblue;
   background-color: rgb(43, 5, 78);
@@ -75,6 +80,11 @@ span {
   padding-bottom: 5em;
 }
 
+.addButton:active {
+  position: relative;
+  top: 10px;
+}
+
 .lists-container {
   display: flex;
   flex-direction: row;
@@ -115,6 +125,7 @@ span {
   border-radius: 1em;
   color: aliceblue;
   box-shadow: 0 4px 2px 2px #090831;
+  gap: 1rem;
 }
 
 .playlist button {
@@ -187,6 +198,11 @@ span {
   border-radius: 1.5em;
 }
 
+.searchbar button:active {
+  position: relative;
+  top: 10px;
+}
+
 .searchMessage {
   color: aliceblue;
   font-size: 1.5em;
@@ -196,9 +212,10 @@ span {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin: 0em 1em 1em 1em;
-  border-bottom: solid 1px;
+  padding: 1em;
+  border: solid 2px;
   border-color: rgb(72, 166, 248);
+  border-radius: 1rem;
   @media (max-width: 700px) {
     flex-wrap: wrap;
     justify-content: center;
@@ -222,6 +239,7 @@ span {
   border-radius: 1em;
   color: aliceblue;
   box-shadow: 0 4px 2px 2px #090831;
+  gap: 1rem;
 }
 
 
