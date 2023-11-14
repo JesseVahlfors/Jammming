@@ -1,78 +1,57 @@
-@import url(../Utilities/StylingVariables.css);
-
-.playlist {
+.playlistForm {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    background-color: rgb(138, 43, 226, 50%);
+    width: 45%;
     border-radius: 1em;
     color: aliceblue;
-    grid-area: 1 / 6 / 2 / 8;
-    gap: 8px;
+    box-shadow: 0 8px 8px 4px #0908318e;
+    gap: 1rem;
+    align-items: center;
 }
-
-.playlist button {
+  
+.playlistForm button {
     align-self: center;
-    background-color: var(--tertiary-color);
-    box-shadow: 20px 20px 4px 0px rgba(0, 0, 0, 0.25);
 }
 
-.playlist button:active {
-    position:relative;
-	top:10px;
-    left: 10px;
-}
-
-
-.playlist input {
-    background-color: var(--secondary-color);
+.playlistForm input {
+    height: 5rem;
+    width: 100%;
+    background-color: rgb(150, 157, 255, 0%);
     color: aliceblue;
     font-size: 1.5em;
-    border: none;
-    border-bottom: solid 2px;
-    border-color: var(--accent-color);
-    border-radius: 1rem;
-    box-sizing: content-box;
-    height: 2rem;
+    border: none; 
+    border-bottom: solid 2px rgb(72, 166, 248);
+    margin: 0;
+    padding: 0.2em;
+    box-sizing: border-box;
     text-align: center;
     @media (max-width: 700px) {
         font-size: 1.5em;
     } 
 }
 
-.playlist input:focus {
-    outline-color: var(--accent-color);
-}
-
-.playlistItems {
+.playlist {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    width: 100%;
+    gap: 1rem;
 }
-
-.playlistName {
-    display: block;
-    width: 25em;
-    height: 3em;
-}
-
 .playlistTrack {
-    display: grid;
-    width: 20.75rem;
-    height: 12.5rem;
-    grid-template-columns: 1fr 5fr;
-    grid-template-rows: 1fr;
-    grid-column-gap: 0px;
-    grid-row-gap: 0px;
-    align-items: center;
+    display: flex;
+    flex-direction: row;
+    background-color: rgb(138, 43, 226, 50%);
+    width: 99%;
     border-radius: 1em;
+    color: aliceblue;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 8px 8px 4px #0908318e;
+    @media (max-width: 600px) {
+        flex-direction: column;
+    }
 }
-
-
-.playlistTrack button {
-    max-width: none;
-    width: 2rem;
-    height: 12.5rem;
-    border-radius: 0rem 1.25rem 1.25rem 0rem;
-    border: 1px solid #75FFF7;
-    background: #6DE2FC;
+.removeButton {
+    width: 40px;
+    min-width: auto;
 }

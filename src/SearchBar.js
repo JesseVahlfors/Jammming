@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { getAccessToken, checkAccessTokenExpiration } from "./AccessToken";
+import { getAccessToken, checkAccessTokenExpiration } from "./AccessToken/AccessToken";
 
 export default function SearchBar (props) {
     const [searchData, setSearchData] = useState("");

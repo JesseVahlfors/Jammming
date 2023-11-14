@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { getAccessToken } from "./AccessToken";
+import { getAccessToken } from "./AccessToken/AccessToken";
 
 
 function GetUserId({ onUserIdReceived }) {

@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import './App.css';
 import TrackList from '../Tracklist/TrackList';
-import background from "./img/HeadphonesGirl.png"
-import { authorizationUrl } from './Authorization';
-import { clearURLParameters, getAccessToken, setAccessToken } from '..AccessToken/AccessToken';
-import SearchBar from '../SearchBar';
-import GetUserId from './GetUserId';
-import CreatePlaylist from './CreatePlaylist';
+import { authorizationUrl } from '../Authorization';
+import { clearURLParameters, getAccessToken, setAccessToken } from '../AccessToken/AccessToken';
+import SearchBar from '../SearchBar'
+import GetUserId from '../GetUserId';
+import CreatePlaylist from '../CreatePlaylist';
 
 function App() {
   const [searchData, setSearchData] = useState([])
@@ -74,33 +73,28 @@ function App() {
         )}
       </header>
       <main className='App-container'>
-        <figure className='image-container'>
-          <img src={background} alt='Girl with headphones' />
-        </figure> 
-        <section className='section'>
-          <SearchBar setSearchData={setSearchData} setLoading={setLoading} />
-          <div className='lists-container'>
-              {loading ? (
-                <div className="tracklist">
-                  <h2 style={{alignSelf:"center"}}>Loading...</h2>
-                </div>
-                
-              ) : (
-                <>
-                  {token && (<TrackList tracks={searchData} onAddToPlaylist={handleAddToPlaylist}/>)}
-                  {token && (
-                  <CreatePlaylist
-                    accessToken={token}
-                    userId={userId}
-                    playlist={playlist}
-                    onRemoveFromPlaylist={handleRemoveFromPlaylist}
-                    onSuccess={handleOnSuccess}
-                  />
-                  )}
-                </>
-              )}        
-          </div> 
-        </section>             
+        <SearchBar setSearchData={setSearchData} setLoading={setLoading} />
+        <div className='lists-container'>
+            {loading ? (
+              <div className="tracklist">
+                <h2 style={{alignSelf:"center"}}>Loading...</h2>
+              </div>
+              
+            ) : (
+              <>
+                {token && (<TrackList tracks={searchData} onAddToPlaylist={handleAddToPlaylist}/>)}
+                {token && (
+                <CreatePlaylist
+                  accessToken={token}
+                  userId={userId}
+                  playlist={playlist}
+                  onRemoveFromPlaylist={handleRemoveFromPlaylist}
+                  onSuccess={handleOnSuccess}
+                />
+                )}
+              </>
+            )}        
+        </div>     
       </main>
       <footer>
         <h3>Made by <a href='https://github.com/JesseVahlfors'>Jesse Vahlfors</a> 2023</h3>
