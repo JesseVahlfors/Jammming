@@ -35,7 +35,8 @@ function App() {
     if(!isInPlaylist) {setPlaylist([...playlist, track])}; 
   };
 
-  const handleRemoveFromPlaylist = (track) => {
+  const handleRemoveFromPlaylist = (track, event) => {
+    event.preventDefault();
     const updatedPlaylist = playlist.filter((t) => t.id !== track.id);
     setPlaylist(updatedPlaylist);
   }
@@ -88,7 +89,7 @@ function App() {
                   accessToken={token}
                   userId={userId}
                   playlist={playlist}
-                  onRemoveFromPlaylist={handleRemoveFromPlaylist}
+                  onRemoveFromPlaylist={(track, event) => handleRemoveFromPlaylist(track, event)}
                   onSuccess={handleOnSuccess}
                 />
                 )}
