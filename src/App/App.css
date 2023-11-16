@@ -22,7 +22,8 @@ button {
 }
 
 button:hover {
-  background: rgb(151, 88, 209);
+  background: rgb(72, 166, 248);
+  border-color: rgb(138, 43, 226, 50%);
 }
 
 button:active {
