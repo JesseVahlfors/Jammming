@@ -8,7 +8,8 @@ function TrackList({ tracks, onAddToPlaylist }) {
             <h2>Results</h2>
             {tracks.map((track) => (
                 <div key={track.id} className="tracklist-container">
-                    <Track  
+                    <Track 
+                    trackId={track.id} 
                     name={track.name} 
                     artist={track.artists[0].name} 
                     album={track.album.name}  

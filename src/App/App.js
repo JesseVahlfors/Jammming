@@ -6,6 +6,7 @@ import { clearURLParameters, getAccessToken, setAccessToken } from '../AccessTok
 import SearchBar from '../SearchBar'
 import GetUserId from '../GetUserId';
 import CreatePlaylist from '../CreatePlaylist';
+import { AudioProvider } from '../Utilities/AudioContext';
 
 function App() {
   const [searchData, setSearchData] = useState([])
@@ -73,30 +74,32 @@ function App() {
           </div>
         )}
       </header>
-      <main className='App-container'>
-        <SearchBar setSearchData={setSearchData} setLoading={setLoading} />
-        <div className='lists-container'>
-            {loading ? (
-              <div className="tracklist">
-                <h2 style={{alignSelf:"center"}}>Loading...</h2>
-              </div>
-              
-            ) : (
-              <>
-                {token && (<TrackList tracks={searchData} onAddToPlaylist={handleAddToPlaylist}/>)}
-                {token && (
-                <CreatePlaylist
-                  accessToken={token}
-                  userId={userId}
-                  playlist={playlist}
-                  onRemoveFromPlaylist={(track, event) => handleRemoveFromPlaylist(track, event)}
-                  onSuccess={handleOnSuccess}
-                />
-                )}
-              </>
-            )}        
-        </div>     
-      </main>
+      <AudioProvider>
+        <main className='App-container'>
+          <SearchBar setSearchData={setSearchData} setLoading={setLoading} />
+          <div className='lists-container'>
+              {loading ? (
+                <div className="tracklist">
+                  <h2 style={{alignSelf:"center"}}>Loading...</h2>
+                </div>
+                
+              ) : (
+                <>
+                  {token && (<TrackList tracks={searchData} onAddToPlaylist={handleAddToPlaylist}/>)}
+                  {token && (
+                  <CreatePlaylist
+                    accessToken={token}
+                    userId={userId}
+                    playlist={playlist}
+                    onRemoveFromPlaylist={(track, event) => handleRemoveFromPlaylist(track, event)}
+                    onSuccess={handleOnSuccess}
+                  />
+                  )}
+                </>
+              )}        
+          </div>     
+        </main>
+      </AudioProvider>
       <footer>
         <h3>Made by <a href='https://github.com/JesseVahlfors'>Jesse Vahlfors</a> 2023</h3>
       </footer>  

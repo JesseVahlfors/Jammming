@@ -1,17 +1,23 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useRef, useState } from "react";
 import './Track.css'
+import { useAudio } from "../Utilities/AudioContext";
 
 function Track(props) {
     const audioRef = useRef(null);
     const [isPlaying, setIsPlaying] = useState(false)
     const [playError, setPlayError] = useState(false)
 
+    const { playAudio, currentTrackId } = useAudio();
+
     const handlePlay = (event) => {
         event.preventDefault();
 
-        if (isPlaying) {
-            audioRef.current.pause();
+        if (currentTrackId === props.trackId && isPlaying) {
+            audioRef.current.pause()
+            setIsPlaying(false);
         } else {
+            playAudio(audioRef.current, props.trackId);
+
             const playPromise = audioRef.current.play();
             if(playPromise !== undefined) {
                 playPromise.then(() =>{
@@ -25,16 +31,6 @@ function Track(props) {
         setIsPlaying(!isPlaying);
     };
 
-    // Pause the audio when the component unmounts
-    useEffect(() => {
-        return () => {
-            if (isPlaying) {
-                audioRef.current.pause();
-                setIsPlaying(false)
-                setPlayError(false)
-            }
-        };
-    }, [isPlaying]);
 
     return (
         <div className="track">
@@ -44,7 +40,7 @@ function Track(props) {
                 <p>{props.artist} | {props.album}</p>
                 {playError ? <p>Preview Unavailable</p> : 
                 <button onClick={(event) => handlePlay(event)}>
-                    {isPlaying ? "Pause" : "Play Preview" } 
+                    {isPlaying && currentTrackId === props.trackId ? "Pause" : "Play Preview" } 
                 </button>}
                 <audio ref={audioRef} src={props.preview} type="audio/mp3" />
             </div>
