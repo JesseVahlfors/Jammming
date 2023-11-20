@@ -18,7 +18,7 @@ function App() {
     if (hash) {
       const urlParams = new URLSearchParams(hash.replace("#", "?"));
       const newToken = urlParams.get('access_token');
-      const expiresIn = urlParams.get('expires_in')
+      const expiresIn = urlParams.get('expires_in');
       if (newToken) {
         // Store the token in localStorage
         window.localStorage.setItem("token", newToken);
@@ -26,6 +26,10 @@ function App() {
         // Set the token in the component's state
         setAccessToken(newToken, expiresIn);
         setToken(newToken)
+
+           // Remove the access token from the URL bar
+        const newUrl = window.location.href.split('#')[0];
+        window.history.replaceState({}, document.title, newUrl);
       }
     }
   }, [])
