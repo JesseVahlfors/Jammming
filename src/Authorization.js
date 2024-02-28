@@ -1,4 +1,4 @@
-const clientId = "70293d0b13ea4ca5b53bc975873c5879" //You need to set this to your own spotify client Id
+const clientId = process.env.REACT_APP_CLIENT_ID; //You need to set this to your own spotify client Id
 const redirectUri = "https://jammming-jesse.netlify.app"  /* "http://localhost:3000" */  //you need to set this redirect URIs to be the same as the one on spotify app dashboard. 
 const scope = "user-read-private playlist-modify-private playlist-modify-public user-read-email"
 
